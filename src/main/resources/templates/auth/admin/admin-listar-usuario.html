@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Usuarios</title>
+
+  <link rel="stylesheet" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>]
+
+<div th:insert="fragments/public-nav::navbar"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Lista de Usuarios</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Nascimento</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${usuarios.empty}">
+            <td colspan="">Sem usuarios</td>
+          </tr>
+          <tr th:each="usuario : ${usuarios}">
+            <td><span th:text="${usuario.nome}">Nome</span></td>
+            <td><span th:text="${usuario.cpf}">cpf</span></td>
+            <td><span th:text="${#dates.format(usuario.dataNascimento, 'dd/MM/yyyy')}">Nome</span></td>
+            <td><span th:text="${usuario.email}">Nome</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="webjars/jquery/3.6.0/jquery.js"></script>
+</body>
+</html>
